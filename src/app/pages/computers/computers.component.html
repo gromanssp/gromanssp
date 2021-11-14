@@ -1,0 +1,63 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #input (keyup)="buscarComputadora( input.value )" type="text" class="form-control" placeholder="Buscar Computadora">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="text-right">
+                    <button (click)="insertarComputadora()" class="btn btn-rounded btn-primary">
+                        <i class="fa fa-plus"></i>
+                        Insertar Computadora
+                    </button>
+                </div>
+
+                <h3 class="card-title text-primary text-center p-t-20">Computadoras Registradas <sup><span class="badge badge-pill badge-primary">Computadoras</span></sup></h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>QR</th>
+                            <th>Inventario</th>
+                            <th>Responsable</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <button [routerLink]="['/computadora', '']" class="btn btn-primary">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+
+                                <button class="m-l-5 btn btn-danger">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

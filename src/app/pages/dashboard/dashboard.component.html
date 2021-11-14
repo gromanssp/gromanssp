@@ -1,0 +1,94 @@
+<div class="container-fluid row">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body little-profile text-center">
+                    <div class="pro-img m-t-20"><img [src]="this.usuario.img | imagen" alt="Foto del Usuario"></div>
+                    <h3 class="m-b-0">{{this.usuario.nombre}}</h3>
+                    <h6 class="text-muted">Correo: {{this.usuario.email}}</h6>
+                    <ul class="list-inline soc-pro m-t-30">
+                        <li><a href="javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-facebook-square"></i></a></li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                    <hr>
+                    <h6 class="text-muted">{{this.usuario.role}}</h6>
+                    <hr>
+                    <div class="row" text-aling="center">
+                        <div class="col-lg-12 col-xlg-6 m-b-30">
+                            <button routerLink="/perfil" type="button" class="btn btn-rounded btn-outline-info m-r-10"><i class="feather icon-user"></i> Perfil</button>
+                            <button routerlink="/accout-settings" type="button" class="btn btn-rounded btn-outline-success"><i class="fa fa-paint-brush"></i> Temas</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card bg-success">
+                        <div class="card-body">
+                            <div class="d-flex no-block">
+                                <div class="m-r-20 align-self-center"><i class="fa fa-3x fa-hospital-o white"></i></div>
+                                <div class="align-self-center">
+                                    <h6 class="text-white m-t-10 m-b-0">Total de Hospitales</h6>
+                                    <h2 class="m-t-0 text-white">{{totalHospitales}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card bg-info">
+                        <div class="card-body">
+                            <div class="d-flex no-block">
+                                <div class="m-r-20 align-self-center"><i class="fa fa-3x fa-user-md white"></i></div>
+                                <div class="align-self-center">
+                                    <h6 class="text-white m-t-10 m-b-0">Total de Médicos</h6>
+                                    <h2 class="m-t-0 text-white">{{totalMedicos}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card bg-warning">
+                        <div class="card-body">
+                            <div class="d-flex no-block">
+                                <div class="m-r-20 align-self-center"><i class="fa fa-3x fa-laptop white"></i></div>
+                                <div class="align-self-center">
+                                    <h6 class="text-white m-t-10 m-b-0">Total de Computadoras</h6>
+                                    <h2 class="m-t-0 text-white">{{totalMedicos}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card bg-primary">
+                        <div class="card-body">
+                            <div class="d-flex no-block">
+                                <div class="m-r-20 align-self-center"><i class="fa fa-3x fa-user-circle-o white"></i></div>
+                                <div class="align-self-center">
+                                    <h6 class="text-white m-t-10 m-b-0">Total de Usuarios</h6>
+                                    <h2 class="m-t-0 text-white">{{totalUsuarios}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Resumen de Datos</h4>
+                            <app-grafico-dona [chartLabels]="resumen.objetos" [chartData]="resumen.datos" chartType="doughnut">
+                            </app-grafico-dona>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

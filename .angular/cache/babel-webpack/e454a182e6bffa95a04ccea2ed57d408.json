@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Grafico {\n  constructor(medico, hospitales, usuarios, pc) {\n    this.medico = medico;\n    this.hospitales = hospitales;\n    this.usuarios = usuarios;\n    this.pc = pc;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

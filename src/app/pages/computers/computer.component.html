@@ -1,0 +1,740 @@
+<div class="app-content">
+    <div class="main-content">
+        <div class="wrap-content container" id="container">
+            <!-- start: WIZARD DEMO -->
+            <div class="container-fluid container-fullw bg-white">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="over-title margin-bottom-15">Computadora | <span class="text-bold">desktop</span></h5>
+                        <p>
+                            Equipamiento Informatico, PC Escritorio.
+                        </p>
+                        <!-- start: WIZARD FORM -->
+                        <form [formGroup]="forma" (ngSubmit)="datosCompletados()" role="form" class="smart-wizard" id="form">
+                            <div id="wizard" class="swMain">
+                                <!-- start: WIZARD SEPS -->
+                                <ul>
+                                    <li>
+                                        <a class="pointer" [routerLink]="['/computadora', 'paso1', id]" routerLinkActive="router-link-active" [ngClass]="{'selected': (paginas.pag1), 'done': (paso !== 'paso1'), 'wait': (espera)}">
+                                            <div class="stepNumber">
+                                                1
+                                            </div>
+                                            <span class="stepDesc"><small> Datos Generales </small></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="pointer" [routerLink]="['/computadora', 'paso2', id]" routerLinkActive="router-link-active" [ngClass]="{'selected': (paso === 'paso2'), 'done': checkPaso2()}">
+                                            <div class="stepNumber">
+                                                2
+                                            </div>
+                                            <span class="stepDesc"> <small> Módulo (Placa Madre, RAM, HDD) </small></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="pointer" [routerLink]="['/computadora', 'paso3', id]" routerLinkActive="router-link-active" [ngClass]="{'selected': (paginas.pag3), 'done': (paso === 'paso4')}">
+                                            <div class="stepNumber">
+                                                3
+                                            </div>
+                                            <span class="stepDesc"> <small> Disco Duro y Fuente Interna</small> </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="pointer" [routerLink]="['/computadora', 'paso4', id]" routerLinkActive="router-link-active" [ngClass]="{'selected': (paginas.pag4)}">
+                                            <div class="stepNumber">
+                                                4
+                                            </div>
+                                            <span class="stepDesc"> <small> Periféricos </small> </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- end: WIZARD SEPS -->
+                                <!-- start: WIZARD PASO 1 -->
+                                <div id="step-1" formGroupName="paso1" *ngIf="paginas.pag1" class="animated" [ngClass]="{'zoomInUp': animationIn, 'fadeInRight': animationNext, 'fadeInLeft': animationBack}">
+                                    <div class="row">
+                                        <div class="col-md-5 text-center">
+                                            <div class="padding-30 p-t-100">
+                                                <img width="234" src="assets/images/PCEscritorio.png" class="img-thumbnail" alt="Imagen de PC" />
+                                                <h2 class="StepTitle">Datos Generales</h2>
+                                                <h6>
+                                                    Especifique el Responsable de la Computadora, asi como el Número de Inventario y la Marca del Chasis.
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 m-0 p-0">
+                                            <fieldset>
+                                                <legend>
+                                                    Responsable de la PC
+                                                </legend>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" [ngClass]="{'has-danger': (!forma.controls.paso1['controls'].nombre.valid) && (forma.controls.paso1['controls'].nombre.touched)}">
+                                                            <label>
+                                                                Nombre <span class="symbol required">*</span>
+                                                            </label>
+                                                            <input type="text" formControlName="nombre" placeholder="Escriba su nombre aquí" class="form-control" required/>
+                                                            <div class="m-t-5 form-control-feedback animated tada" *ngIf="(forma.controls.paso1['controls'].nombre.errors?.required) && (forma.controls.paso1['controls'].nombre.touched)">
+                                                                El nombre es requerido.
+                                                            </div>
+                                                            <div class="m-t-5 form-control-feedback animated tada" *ngIf="forma.controls.paso1['controls'].nombre.errors?.minlength">
+                                                                Al menos 3 caracteres.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" [ngClass]="{'has-danger': (!forma.controls.paso1['controls'].apellidos.valid) && (forma.controls.paso1['controls'].apellidos.touched)}">
+                                                            <label class="control-label">
+                                                                Apellidos <span class="symbol required">*</span>
+                                                            </label>
+                                                            <input type="text" formControlName="apellidos" placeholder="Escriba los Apellidos Aquí" class="form-control" minlength="3" required />
+                                                            <div class="m-t-5 form-control-feedback animated tada" *ngIf="(forma.controls.paso1['controls'].apellidos.errors?.required) && (forma.controls.paso1['controls'].apellidos.touched)">
+                                                                El apellido es requerido.
+                                                            </div>
+                                                            <div class="m-t-5 form-control-feedback animated tada" *ngIf="forma.controls.paso1['controls'].apellidos.errors?.minlength">
+                                                                Al menos 3 caracteres.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="block">
+                                                                Género                                                               
+                                                            </label>
+                                                            <div class="clip-radio chk-col-light-blue">
+                                                                <input type="radio" formControlName="sexo" id="wz-male" name="sexo" value="masculino">
+                                                                <label for="wz-male">
+                                                                    <i class="fa fa-male"></i>
+                                                                    Hombre
+                                                                </label>
+                                                                <input type="radio" formControlName="sexo" id="wz-female" name="sexo" value="femenino">
+                                                                <label for="wz-female">
+                                                                    <i class="fa fa-female"></i>
+                                                                    Mujer 
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>
+                                                                Departamento <span class="symbol required">*</span>
+                                                            </label>
+                                                            <select (change)="cambioDepartamento( $event.target.value )" class="form-control pointer" name="departamentos" required>
+                                                                <option value="" disabled="" selected="">Seleccionar</option>
+                                                                <option value="direccion">Dirección</option>
+                                                                <option value="gestion">Gestión</option>
+                                                                <option value="logistica">Logística</option>
+                                                                <option value="inversiones">Inversiones</option>
+                                                                <option value="implantacion">Implantación</option>
+                                                                <option value="operaciones">Operaciones</option>
+                                                                <option value="appHorizontales">Ap.Horizontales</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <legend>
+                                                    Inventario | Chasis
+                                                </legend>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" [ngClass]="{'has-danger': (!forma.controls.paso1['controls'].inventario.valid) && (forma.controls.paso1['controls'].inventario.touched)}">
+                                                            <label>
+                                                                Inventario <span class="symbol required">*</span>
+                                                            </label>
+                                                            <input type="number" formControlName="inventario" placeholder="Número de Inventario Aquí" class="form-control" min="0" required/>
+                                                            <div class="m-t-5 form-control-feedback animated tada" *ngIf="(!forma.controls.paso1['controls'].inventario.valid) && (forma.controls.paso1['controls'].inventario.touched)">
+                                                                El inventario es requerido.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Serie del Sello
+                                                            </label>
+                                                            <input type="number" formControlName="serieSello" placeholder="Número de Serie del Sello" class="form-control" min="0" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" [ngClass]="{'has-danger': (!forma.controls.paso1['controls'].marcaChasis.valid) && (forma.controls.paso1['controls'].marcaChasis.touched)}">
+                                                            <label>
+                                                               Marca del Chasis <span class="symbol required">*</span>
+                                                            </label>
+                                                            <input type="text" formControlName="marcaChasis" placeholder="Escriba la Marca del Chasis" class="form-control" required/>
+                                                            <div class="m-t-5 form-control-feedback animated tada" *ngIf="(forma.controls.paso1['controls'].marcaChasis.errors?.required) && (forma.controls.paso1['controls'].marcaChasis.touched)">
+                                                                La marca es requerida.
+                                                            </div>
+                                                            <div class="m-t-5 form-control-feedback animated tada" *ngIf="forma.controls.paso1['controls'].marcaChasis.errors?.minlength">
+                                                                Al menos 2 caracteres.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Serie del Chasis
+                                                            </label>
+                                                            <input type="text" formControlName="serieChasis" placeholder="Número de Serie del Chasis" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <legend>Sistema Operativo</legend>
+                                                <div class="form-group">
+                                                    <label for="form-field-select-1">
+                                                        Tipo de Sistema Operativo
+                                                    </label>
+                                                    <div class="cs-select" tabindex="0">
+                                                        <select (change)="cambioSO( $event.target.value )" class="form-control pointer">
+                                                                <option value="" disabled="" selected="">Seleccionar</option>
+                                                                <option value="Linux">Linux</option>
+                                                                <option value="MAC">MAC</option>
+                                                                <option value="Windows">Microsoft Windows</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <div class="form-group">
+                                                <button [routerLink]="['/computadoras']" routerLinkActive="router-link-active" class="btn btn-outline-danger btn-o back-step btn-wide pull-left">
+                                                    <i class="fa fa-trash"></i> Cancelar
+                                                </button>
+                                                <button [disabled]="forma.controls.paso1.invalid" type="button" (click)="datosPaso1(false, true, false)" class="btn btn-outline-primary btn-o next-step btn-wide pull-right">
+                                                    Siguiente <i class="fa fa-arrow-circle-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end: WIZARD PASO 1 -->
+                                <!-- start: WIZARD PASO 2 -->
+                                <div id="step-2" formGroupName="paso2" *ngIf="paginas.pag2" class="animated" [ngClass]="{'zoomInUp': animationIn, 'fadeInRight': animationNext, 'fadeInLeft': animationBack}">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="padding-30 p-t-100">
+                                                <div class="text-center">
+                                                    <img src="assets/images/KITRAM.png" class="img-thumbnail" alt="Imagen de Módulo RAM y Micro" />
+                                                    <h2 class="StepTitle"><i class=" fa-2x text-primary block margin-bottom-10"></i> <span class="text-large block">Placa Madre | RAM | Micro</span></h2>
+                                                    <div>
+                                                        <i class="fa fa-user"></i> Responsable: {{ _computadoraService.nombre }} {{ _computadoraService.apellidos }}
+                                                    </div>
+                                                    <div class="text-small align-content-end">
+                                                        Inventario: {{ _computadoraService.inventario }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <fieldset>
+                                                <legend>
+                                                    Placa Madre
+                                                </legend>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>
+                                                                Marca <span class="symbol required">*</span>
+                                                            </label>
+                                                            <input type="text" formControlName="marcaPlaca" id="txtMarca" placeholder="Escriba la Marca Aquí" class="form-control" />
+                                                            <div class="m-t-5 form-control-feedback animated tada" *ngIf="(forma.controls.paso2['controls'].marcaPlaca.errors?.required) && (forma.controls.paso2['controls'].marcaPlaca.touched)">
+                                                                La Marca es requerida.
+                                                            </div>
+                                                            <div class="m-t-5 form-control-feedback animated tada" *ngIf="forma.controls.paso2['controls'].marcaPlaca.errors?.minlength">
+                                                                Al menos 2 caracteres.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Modelo <span class="symbol required">*</span>
+                                                            </label>
+                                                            <input type="text" formControlName="modeloPlaca" placeholder="Escriba el Modelo Aquí" class="form-control" />
+                                                            <div class="m-t-5 form-control-feedback animated tada" *ngIf="(forma.controls.paso2['controls'].modeloPlaca.errors?.required) && (forma.controls.paso2['controls'].modeloPlaca.touched)">
+                                                                El Modelo es requerido.
+                                                            </div>
+                                                            <div class="m-t-5 form-control-feedback animated tada" *ngIf="forma.controls.paso2['controls'].modeloPlaca.errors?.minlength">
+                                                                Al menos 2 caracteres.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <legend>
+                                                    Microprocesador
+                                                </legend>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="form-field-select-2">
+                                                                Tipo <span class="symbol required">*</span>
+                                                            </label>
+                                                            <select (change)="cambioMicro( $event.target.value )" class="form-control pointer" required>
+                                                                <option value="" disabled="" selected="">Seleccionar</option>
+                                                                <option value="Intel">Intel</option>
+                                                                <option value="AMD">AMD</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                    Frec.(GHz) <span class="symbol required">*</span>
+                                                                </label>
+                                                            <input type="number" formControlName="microFrecuencia" placeholder="Frecuencia" class="form-control" name="microFrecuencia" min="1" required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Socket <span class="symbol required">*</span>
+                                                            </label>
+                                                            <input type="number" formControlName="socket" placeholder="Socket" class="form-control" name="mModelo" min="1" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <legend>
+                                                    Memoria RAM
+                                                </legend>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="block">
+                                                                Cantidad de Memorias
+                                                            </label>
+                                                            <div class="clip-radio chk-col-light-blue">
+                                                                <input (click)="cantidades( $event.target.value )" formControlName="memoriaNumero" type="radio" id="rm-1" name="memoriaNumero" value='1' checked="checked">
+                                                                <label for="rm-1">
+                                                                    1
+                                                                </label>
+                                                                <input (click)="cantidades( $event.target.value )" formControlName="memoriaNumero" type="radio" id="rm-2" name="memoriaNumero" value='2'>
+                                                                <label for="rm-2">
+                                                                    2
+                                                                </label>
+                                                                <input (click)="cantidades( $event.target.value )" formControlName="memoriaNumero" type="radio" id="rm-3" name="memoriaNumero" value='3'>
+                                                                <label for="rm-3">
+                                                                    3
+                                                                </label>
+                                                                <input (click)="cantidades( $event.target.value )" formControlName="memoriaNumero" type="radio" id="rm-4" name="memoriaNumero" value='4'>
+                                                                <label for="rm-4">
+                                                                    4 
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="block">
+                                                                Tipo de Memoria RAM <span class="symbol required">*</span>
+                                                            </label>
+                                                            <select (change)="cambioRAM( $event.target.value )" class="form-control pointer" required>
+                                                                <option value="" disabled="" selected="">Seleccionar</option>
+                                                                <option value="DIMM">DIMM</option>
+                                                                <option value="RIMM">RIMM</option>
+                                                                <option value="DDR">DDR</option>
+                                                                <option value="DDR2">DDR2</option>
+                                                                <option value="DDR3">DDR3</option>
+                                                                <option value="DDR4">DDR4</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <fieldset *ngFor="let ranura of repetir; let i=index">
+                                                    <legend>
+                                                        Ranura {{ i + 1 }}
+                                                    </legend>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="control-label">
+                                                                    Marca <span class="symbol required">*</span>
+                                                                </label>
+                                                                <!-- Arreglar cantidad de memorias -->
+                                                                <input formControlName="memoriaMarca" type="text" placeholder="Marca RAM" class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="form-field-select-2">
+                                                                    Capacidad <span class="symbol required">*</span>
+                                                                </label>
+                                                                <select (change)="cambioCapacidadRAM( $event.target.value, i + 1 )" class="form-control pointer" required>
+                                                                    <option value="" disabled="" selected="">Seleccionar</option>
+                                                                    <option value="64">64 Mb</option>
+                                                                    <option value="128">128 Mb</option>
+                                                                    <option value="256">256 Mb</option>
+                                                                    <option value="512">512 Mb</option>
+                                                                    <option value="1024">1024 Mb</option>
+                                                                    <option value="2048">2048 Mb</option>
+                                                                    <option value="4096">4096 Mb</option>
+                                                                    <option value="8192">8192 Mb</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="control-label">
+                                                                    Frecuencia <span class="symbol required">*</span>
+                                                                </label>
+                                                                <select (change)="cambioFrecuenciaRAM( $event.target.value, i + 1 )" class="form-control pointer" required>
+                                                                    <option value="" disabled="" selected="">Seleccionar</option>
+                                                                    <option value="100">100 MHz</option>
+                                                                    <option value="133">133 MHz</option>
+                                                                    <option value="150">150 MHz</option>
+                                                                    <option value="166">166 MHz</option>
+                                                                    <option value="200">200 MHz</option>
+                                                                    <option value="250">250 MHz</option>
+                                                                    <option value="266">266 MHz</option>
+                                                                    <option value="286">286 MHz</option>
+                                                                    <option value="300">300 MHz</option>
+                                                                    <option value="333">333 MHz</option>
+                                                                    <option value="400">400 MHz</option>
+                                                                    <option value="500">500 MHz</option>
+                                                                    <option value="533">533 MHz</option>
+                                                                    <option value="575">575 MHz</option>
+                                                                    <option value="575">575 MHz</option>
+                                                                    <option value="600">600 MHz</option>
+                                                                    <option value="666">666 MHz</option>
+                                                                    <option value="688">688 MHz</option>
+                                                                    <option value="733">733 MHz</option>
+                                                                    <option value="800">800 MHz</option>
+                                                                    <option value="933">933 MHz</option>
+                                                                    <option value="1000">1000 MHz</option>
+                                                                    <option value="1200">1200 MHz</option>
+                                                                    <option value="1600">1600 MHz</option>
+                                                                    <option value="1866">1866 MHz</option>
+                                                                    <option value="2133">2133 MHz</option>
+                                                                    <option value="2666">2666 MHz</option>
+                                                                    <option value="2400">2400 MHz</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </fieldset>
+                                            <div class="form-group">
+                                                <button (click)="retroceder(false, false, true)" class="btn btn-outline-primary btn-o back-step btn-wide pull-left">
+                                                    <i class="fa fa-arrow-circle-left"></i> Atrás
+                                                </button>
+                                                <button [disabled]="forma.controls.paso2.invalid" (click)="datosPaso2(false, true, false)" class="btn btn-outline-primary btn-o next-step btn-wide pull-right">
+                                                    Siguiente <i class="fa fa-arrow-circle-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end: WIZARD STEP 2 -->
+                                <!-- start: WIZARD STEP 3 -->
+                                <div id="step-3" formGroupName="paso3" *ngIf="paginas.pag3" class="animated" [ngClass]="{'zoomInUp': animationIn, 'fadeInRight': animationNext, 'fadeInLeft': animationBack}">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="text-center p-t-100">
+                                                <img width="128" class="padding-left-30 align-content-end img-thumbnail" src="assets/images/HDD.png" alt="Imagen de HDD" />
+                                                <img width="131" class="padding-left-30 align-content-start img-thumbnail" src="assets/images/Fuente.png" alt="Imagen de Fuente Interna" />
+                                                <h2 class="StepTitle">Almacenamiento y Corriente</h2>
+                                                <p class="text-large">
+                                                    Especifique la cantidad de disco de almacenamiento que posee la PC y la Fuente Interna.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <fieldset>
+                                                <legend>
+                                                    Fuente Interna
+                                                </legend>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                No. Serie <span class="symbol required">*</span>
+                                                            </label>
+                                                            <input type="text" formControlName="fuenteSerie" placeholder="Serie HD" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Marca <span class="symbol required">*</span>
+                                                            </label>
+                                                            <input type="text" formControlName="marcaFuente" placeholder="Marca HD" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="form-field-select-2">
+                                                                Cap.(Watt) <span class="symbol required">*</span>
+                                                            </label>
+                                                            <input type="number" formControlName="fuenteCapacidad" placeholder="Capacidad HD" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <legend>
+                                                    Disco Duro
+                                                </legend>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="block">
+                                                                Cantidad de Discos Duros
+                                                            </label>
+                                                            <div class="clip-radio chk-col-light-blue">
+                                                                <input (click)="cantidades( $event.target.value )" type="radio" formControlName="discoNumero" id="hd-1" value="1" checked="checked">
+                                                                <label for="hd-1">
+                                                                    1
+                                                                </label>
+                                                                <input (click)="cantidades( $event.target.value )" type="radio" formControlName="discoNumero" id="hd-2" value="2">
+                                                                <label for="hd-2">
+                                                                    2
+                                                                </label>
+                                                                <input (click)="cantidades( $event.target.value )" type="radio" formControlName="discoNumero" id="hd-3" value="3">
+                                                                <label for="hd-3">
+                                                                    3
+                                                                </label>
+                                                                <input (click)="cantidades( $event.target.value )" type="radio" formControlName="discoNumero" id="hd-4" value="4">
+                                                                <label for="hd-4">
+                                                                    4
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="block">
+                                                                Tipo de Disco <span class="symbol required">*</span>
+                                                            </label>
+                                                            <select (change)="cambioTipoHD( $event.target.value )" class="form-control pointer" required>
+                                                                <option value="" disabled="" selected="">Seleccionar</option>
+                                                                <option value="IDE">IDE</option>
+                                                                <option value="SATA">SATA</option>
+                                                                <option value="SSD">SSD</option>
+                                                                <option value="M2">M2</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <fieldset *ngFor="let disco of repetir; let i=index">
+                                                    <legend>
+                                                        Disco {{ i + 1 }}
+                                                    </legend>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label">
+                                                                    Marca <span class="symbol required">*</span>
+                                                                </label>
+                                                                <input type="text" formControlName="discoMarca" placeholder="Marca HD" class="form-control" name="mH" required/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="form-field-select-2">
+                                                                    Capacidad  <span class="symbol required">*</span>
+                                                                </label>
+                                                                <select (change)="cambioCapacidadHD( $event.target.value )" class="form-control pointer" required>
+                                                                    <option value="" disabled="" selected="">Seleccionar</option>
+                                                                    <option value="20">20 Gb</option>
+                                                                    <option value="40">40 Gb</option>
+                                                                    <option value="80">80 Gb</option>
+                                                                    <option value="120">120 Gb</option>
+                                                                    <option value="160">160 Gb</option>
+                                                                    <option value="220">220 Gb</option>
+                                                                    <option value="500">500 Gb</option>
+                                                                    <option value="1">1 Tb</option>
+                                                                    <option value="15">1,5 Tb</option>
+                                                                    <option value="2">2 Tb</option>
+                                                                    <option value="25">2,5 Tb</option>
+                                                                    <option value="3">3 Tb</option>
+                                                                    <option value="4">4 Tb</option>
+                                                                    <option value="5">5 Tb</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </fieldset>
+                                            <div class="form-group">
+                                                <button (click)="retroceder(false, false, true)" class="btn btn-outline-primary btn-o back-step btn-wide pull-left">
+                                                    <i class="fa fa-arrow-circle-left"></i> Atrás
+                                                </button>
+                                                <button [disabled]="forma.controls.paso3.invalid" [routerLink]="['/computadora', 'paso4']" routerLinkActive="router-link-active" class="btn btn-outline-primary btn-o next-step btn-wide pull-right">
+                                                    Siguiente <i class="fa fa-arrow-circle-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end: WIZARD STEP 3 -->
+                                <!-- start: WIZARD STEP 4 -->
+                                <div id="step-4" formGroupName="paso4" *ngIf="paginas.pag4" class="animated" [ngClass]="{'zoomInUp': animationIn, 'fadeInRight': animationNext, 'fadeInLeft': animationBack}">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="text-center p-t-100">
+                                                <img src="assets/images/Perifericos.png" class="img-thumbnail" alt="Imagen de Periféricos" />
+                                                <h2 class="StepTitle">Periféricos</h2>
+                                                <p class="text-large">
+                                                    Teclado | Mouse | Bocinas | Lector/Quemador.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <fieldset>
+                                                <legend>
+                                                    Torre de CD/DVD
+                                                </legend>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="form-field-select-2">
+                                                                Tipo
+                                                            </label>
+                                                            <select (change)="cambioCD( $event.target.value )" class="form-control pointer">
+                                                                <option value="" disabled="" selected="">Seleccionar</option>
+																<option value="CD">CD</option>
+																<option value="DVD">DVD</option>
+																<option value="Blue-Ray">Blue-Ray</option>                                                                
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="form-field-select-2">
+                                                                Lector/Quemador
+                                                            </label>
+                                                            <select (change)="cambioQuemador( $event.target.value )" class="form-control pointer">
+                                                                <option value="" disabled="" selected="">Seleccionar</option>
+                                                                <option value="Lector">Lector</option>
+                                                                <option value="Quemador">Quemador</option>                                                               
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <legend>
+                                                    Mouse
+                                                </legend>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Marca 
+                                                            </label>
+                                                            <input formControlName="mouseMarca" type="text" placeholder="Marca mouse" class="form-control" name="mM" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="form-field-select-2">
+                                                                Tipo
+                                                            </label>
+                                                            <select (change)="cambioMouse( $event.target.value )" class="form-control pointer">
+                                                                <option value="" disabled="" selected="">Seleccionar</option>
+																<option value="PS2">PS2</option>
+																<option value="USB">USB</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <legend>
+                                                    Teclado
+                                                </legend>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Marca <span class="symbol required">*</span>
+                                                            </label>
+                                                            <input formControlName="tecladoMarca" type="text" placeholder="Marca teclado" class="form-control" name="mT" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Serie 
+                                                            </label>
+                                                            <input type="text" formControlName="tecladoSerie" placeholder="Número de Serie" class="form-control" name="serieTeclado" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="form-field-select-2">
+                                                                Tipo
+                                                            </label>
+                                                            <select (change)="cambioTeclado( $event.target.value )" class="form-control pointer">
+                                                                <option value="" disabled="" selected="">Seleccionar</option>
+																<option value="PS2">PS2</option>
+																<option value="USB">USB</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <legend>
+                                                    Bocinas
+                                                </legend>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Marca 
+                                                            </label>
+                                                            <input type="text" formControlName="bocinaMarca" placeholder="Marca teclado" class="form-control" name="mT" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Serie
+                                                            </label>
+                                                            <input type="text" formControlName="bocinaSerie" placeholder="Número de Serie" class="form-control" name="serieTeclado" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="form-field-select-2">
+                                                                Toma
+                                                            </label>
+                                                            <select (change)="cambioBocina( $event.target.value )" class="form-control pointer">
+                                                                <option value="" disabled="" selected="">Seleccionar</option>
+																<option value="USB">USB</option>
+																<option value="TOMA">Tomacorriente</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <div class="form-group">
+                                                <button [routerLink]="['/computadora', 'paso3']" routerLinkActive="router-link-active" class="btn btn-outline-primary btn-o back-step btn-wide pull-left">
+                                                    <i class="fa fa-arrow-circle-left"></i> Atrás
+                                                </button>
+                                                <button class="btn btn-outline-success btn-scroll btn-scroll-left pull-right">
+                                                    Completar <i class="fa fa-check-circle-o"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end: WIZARD STEP 4 -->
+                            </div>
+                        </form>
+                        <!-- end: WIZARD FORM -->
+                    </div>
+                </div>
+            </div>
+            <!-- start: WIZARD DEMO -->
+        </div>
+    </div>
+</div>
