@@ -3,7 +3,8 @@ import { UsuarioService } from '../../services/service.index';
 import { Usuario } from 'src/app/models/usuario.model';
 import { HospitalService } from '../../services/hospital/hospital.service';
 import { MedicoService } from '../../services/medico/medico.service';
-import { Grafico } from '../../models/grafico.model';
+import { ChartType } from 'chart.js';
+import { SingleDataSet, Label } from 'ng2-charts';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,12 +20,9 @@ export class DashboardComponent implements OnInit {
   totalHospitales: number = 0;
   totalMedicos: number = 0;
 
-  grafico = new Grafico( 0, 0, 0);
-
-  resumen: any = {
-    objetos: ['Medicos', 'Hospitales', 'Usuarios', 'Computadoras'],
-    datos: [ 0, 0, 0, 15]
-  }
+  objetos: Label[] = ['Medicos', 'Hospitales', 'Usuarios', 'Computadoras'];
+  datos: SingleDataSet = [1, 1, 1, 1];
+  chartType: ChartType = 'doughnut';
 
   constructor(
     public _usuarioService: UsuarioService,
@@ -43,7 +41,7 @@ export class DashboardComponent implements OnInit {
   cargarUsuarios() {
     this._usuarioService.cargarUsuarios(this.desde)
         .subscribe( (usuariosbd: any) => {
-          return this.totalUsuarios = usuariosbd.total
+          return this.totalUsuarios = usuariosbd.total;
         });
   }
 
@@ -51,7 +49,6 @@ export class DashboardComponent implements OnInit {
     // this.totalHospitales = this._hospitalService.totalHospitales;
     this._hospitalService.cargarHospitales(this.desde)
         .subscribe( (hospitalesbd: any) => this.totalHospitales = hospitalesbd.length);
-        return this.totalHospitales;
   }
 
   cargarMedicos() {
@@ -64,18 +61,9 @@ export class DashboardComponent implements OnInit {
 
   datosResumen() {
     setTimeout(() => {
-        console.log("Usuarios", this.resumen.datos[0] = this.totalUsuarios);
-        return this.resumen.datos[0] = this.totalUsuarios;
-      }, 900);
-
-    setTimeout(() => {
-        console.log("Hospitales", this.resumen.datos[1] = this.totalHospitales);
-        return this.resumen.datos[1] = this.totalHospitales;
-      }, 900);
-
-    setTimeout(() => {
-        console.log("Medicos", this.resumen.datos[2] = this.totalMedicos);
-        return this.resumen.datos[2] = this.totalMedicos;
-      }, 900);
+        let totalUser = [];
+        totalUser = new Array( this.totalUsuarios, this.totalMedicos, this.totalHospitales, 8);
+        return this.datos = totalUser;
+      }, 200);
   }
 }
