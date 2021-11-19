@@ -18,25 +18,21 @@ export class MedicoService {
     public _usuarioService: UsuarioService
   ) { }
 
-  cargarMedicos() {
+  cargarMedicos(desde: number = 0) {
 
-    let url = URL_SERVICIOS + '/medico';
+    let url = URL_SERVICIOS + '/medico?desde=' + desde;
 
     return this.http.get( url )
     .pipe(
-      map( (resp: any)  => {
-        this.totalMedico = resp.total;
-        return resp.medicos;
-      })
+      map( (resp: any)  =>  resp.medicos)
     );
-
   }
 
   totalMedicos() {
 
     let url = URL_SERVICIOS + '/medico';
     return this.http.get( url )
-    .pipe(map( (resp: any)  => resp.total));
+    .pipe(map( (resp: any)  => this.totalMedico = resp.total));
   }
 
   cargarMedico( id: string ) {

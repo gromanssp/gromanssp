@@ -226,8 +226,8 @@ datosPaso1( animationIn: boolean, animationNext: boolean, animationBack: boolean
 cantidades( numero: string ) {
   const valor: number = JSON.parse(numero);
   this.memoriaChk = valor;
-  let arreglo = [1];
-  console.log(arreglo);
+  let arreglo = new Array(1);
+  console.log('Arreglo', arreglo);
 
   if ( valor === 1 ) {
     arreglo[0] = 1;
@@ -238,7 +238,7 @@ cantidades( numero: string ) {
       arreglo = this.repetir;
       arreglo[0] = arreglo.pop();
       this.repetir = arreglo;
-      console.log(this.repetir);
+      console.log('Repetir',this.repetir);
     }
   } else {
     for (let i = 2; i <= valor; i++) {
