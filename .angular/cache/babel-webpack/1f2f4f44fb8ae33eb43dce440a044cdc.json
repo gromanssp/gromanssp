@@ -1,1 +1,0 @@
-{"ast":null,"code":"export class Hospital {\n  constructor(nombre, img, _id) {\n    this.nombre = nombre;\n    this.img = img;\n    this._id = _id;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}
