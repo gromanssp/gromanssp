@@ -7,7 +7,7 @@ import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 import { Usuario } from '../../models/usuario.model';
 // import map
 import { catchError, map } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 
 @Injectable({

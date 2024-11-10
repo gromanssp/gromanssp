@@ -3,7 +3,7 @@ import { PAGES_ROUTER } from './pages.routers';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // ng2- charts
-import { ChartsModule } from 'ng2-charts';
+// import { ChartsModule } from 'ng2-charts';
 
 import { ShareModule } from '../shared/share.module';
 
@@ -41,7 +41,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         ProgressComponent,
         Graficas1Component,
         IncrementadorComponent,
-        GraficoDonaComponent,
+        // GraficoDonaComponent,
         AccoutSettingsComponent,
         PromesasComponent,
         RxjsComponent,
@@ -64,7 +64,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         ShareModule,
         PAGES_ROUTER,
         FormsModule,
-        ChartsModule,
+        GraficoDonaComponent,
+        // ChartsModule,
         PipesModule,
         FontAwesomeModule,
         ReactiveFormsModule

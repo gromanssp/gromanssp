@@ -1,6 +1,6 @@
 import { NgModule, } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ModalUploadService } from '../components/modals-upload/modal-upload.service';
 
 import {
@@ -17,25 +17,19 @@ import {
   ComputadoraService
  } from './service.index';
 
-@NgModule({
- declarations: [],
-  providers: [
-    SettingsService,
-    SidebarService,
-    SharedService,
-    UsuarioService,
-    LoginGardGuard,
-    SubirArchivoService,
-    ModalUploadService,
-    HospitalService,
-    MedicoService,
-    AdminGuard,
-    VerificaTokenGuard,
-    ComputadoraService
-  ],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-  ]
-})
+@NgModule({ declarations: [], imports: [CommonModule], providers: [
+        SettingsService,
+        SidebarService,
+        SharedService,
+        UsuarioService,
+        LoginGardGuard,
+        SubirArchivoService,
+        ModalUploadService,
+        HospitalService,
+        MedicoService,
+        AdminGuard,
+        VerificaTokenGuard,
+        ComputadoraService,
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class ServiceModule { }

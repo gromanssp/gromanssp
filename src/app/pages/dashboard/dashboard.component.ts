@@ -4,12 +4,13 @@ import { Usuario } from 'src/app/models/usuario.model';
 import { HospitalService } from '../../services/hospital/hospital.service';
 import { MedicoService } from '../../services/medico/medico.service';
 import { ChartType } from 'chart.js';
-import { SingleDataSet, Label } from 'ng2-charts';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { Observable, Subscriber, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
+  providers: [provideCharts(withDefaultRegisterables())],
   styles: []
 })
 export class DashboardComponent implements OnDestroy {
@@ -22,8 +23,8 @@ export class DashboardComponent implements OnDestroy {
   totalHospitales: number = 0;
   totalMedicos: number = 0;
 
-  objetos: Label[] = ['Medicos', 'Hospitales', 'Usuarios', 'Computadoras'];
-  datos: SingleDataSet = [1, 1, 1, 1];
+  objetos: string[] = ['Medicos', 'Hospitales', 'Usuarios', 'Computadoras'];
+  datos: number[] = [1, 1, 1, 1];
   chartType: ChartType = 'doughnut';
 
   constructor(
