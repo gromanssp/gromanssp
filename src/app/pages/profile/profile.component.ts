@@ -4,9 +4,10 @@ import { UsuarioService } from '../../services/service.index';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styles: []
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styles: [],
+    standalone: false
 })
 export class ProfileComponent implements OnInit {
 

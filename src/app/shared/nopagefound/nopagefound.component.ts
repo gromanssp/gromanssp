@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 declare function init_plugins();
 
 @Component({
-  selector: 'app-nopagefound',
-  templateUrl: './nopagefound.component.html',
-  styles: [`
+    selector: 'app-nopagefound',
+    templateUrl: './nopagefound.component.html',
+    styles: [`
 
 .error-box {
   height: 100%;
@@ -24,7 +24,8 @@ declare function init_plugins();
     font-weight: 900;
     text-shadow: 4px 4px 0 #ffffff, 6px 6px 0 #263238;
     line-height: 210px; }
-  `]
+  `],
+    standalone: false
 })
 export class NopagefoundComponent implements OnInit {
 

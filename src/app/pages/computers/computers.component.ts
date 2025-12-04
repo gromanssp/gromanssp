@@ -5,10 +5,10 @@ import { UsuarioService } from '../../services/service.index';
 import { ComputadoraService } from '../../services/service.index';
 
 @Component({
-  selector: 'app-computers',
-  templateUrl: './computers.component.html',
-  styles: [
-  ],
+    selector: 'app-computers',
+    templateUrl: './computers.component.html',
+    styles: [],
+    standalone: false
 })
 export class ComputersComponent implements OnInit {
 

@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
-  selector: 'app-incrementador',
-  templateUrl: './incrementador.component.html',
-  styles: []
+    selector: 'app-incrementador',
+    templateUrl: './incrementador.component.html',
+    styles: [],
+    standalone: false
 })
 export class IncrementadorComponent implements OnInit {
   @ViewChild('txtProgress', {static: true}) txtProgress: ElementRef;

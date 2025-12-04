@@ -8,10 +8,11 @@ import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { Observable, Subscriber, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  providers: [provideCharts(withDefaultRegisterables())],
-  styles: []
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    providers: [provideCharts(withDefaultRegisterables())],
+    styles: [],
+    standalone: false
 })
 export class DashboardComponent implements OnDestroy {
 

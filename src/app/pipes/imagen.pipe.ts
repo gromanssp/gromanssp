@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { URL_SERVICIOS } from '../config/config';
 
 @Pipe({
-  name: 'imagen'
+    name: 'imagen',
+    standalone: false
 })
 export class ImagenPipe implements PipeTransform {
 

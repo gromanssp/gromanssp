@@ -8,9 +8,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ModalUploadService } from '../../components/modals-upload/modal-upload.service';
 
 @Component({
-  selector: 'app-medico',
-  templateUrl: './medico.component.html',
-  styles: []
+    selector: 'app-medico',
+    templateUrl: './medico.component.html',
+    styles: [],
+    standalone: false
 })
 export class MedicoComponent implements OnInit {
 

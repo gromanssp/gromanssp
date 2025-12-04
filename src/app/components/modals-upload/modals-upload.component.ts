@@ -4,9 +4,10 @@ import { SubirArchivoService } from 'src/app/services/service.index';
 import { ModalUploadService } from './modal-upload.service';
 
 @Component({
-  selector: 'app-modals-upload',
-  templateUrl: './modals-upload.component.html',
-  styles: []
+    selector: 'app-modals-upload',
+    templateUrl: './modals-upload.component.html',
+    styles: [],
+    standalone: false
 })
 export class ModalsUploadComponent implements OnInit {
 

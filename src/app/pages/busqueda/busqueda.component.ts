@@ -7,9 +7,10 @@ import { Hospital } from '../../models/hospital.model';
 import { Usuario } from '../../models/usuario.model';
 
 @Component({
-  selector: 'app-busqueda',
-  templateUrl: './busqueda.component.html',
-  styles: []
+    selector: 'app-busqueda',
+    templateUrl: './busqueda.component.html',
+    styles: [],
+    standalone: false
 })
 export class BusquedaComponent implements OnInit {
 

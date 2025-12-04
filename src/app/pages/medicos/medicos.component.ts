@@ -3,9 +3,10 @@ import { Medico } from 'src/app/models/medico.model';
 import { MedicoService } from '../../services/service.index';
 
 @Component({
-  selector: 'app-medicos',
-  templateUrl: './medicos.component.html',
-  styles: []
+    selector: 'app-medicos',
+    templateUrl: './medicos.component.html',
+    styles: [],
+    standalone: false
 })
 export class MedicosComponent implements OnInit {
 

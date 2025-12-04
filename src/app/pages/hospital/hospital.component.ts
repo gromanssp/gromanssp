@@ -6,9 +6,10 @@ import Swal from 'sweetalert2';
 
 
 @Component({
-  selector: 'app-hospital',
-  templateUrl: './hospital.component.html',
-  styles: []
+    selector: 'app-hospital',
+    templateUrl: './hospital.component.html',
+    styles: [],
+    standalone: false
 })
 export class HospitalComponent implements OnInit {
 

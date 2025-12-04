@@ -5,10 +5,10 @@ import { ComputadoraService } from '../../services/service.index';
 // import { faCoffee, faMale } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-computer',
-  templateUrl: './computer.component.html',
-  styles: [
-  ],
+    selector: 'app-computer',
+    templateUrl: './computer.component.html',
+    styles: [],
+    standalone: false
 })
 export class ComputerComponent implements OnInit {
 

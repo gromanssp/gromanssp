@@ -3,9 +3,10 @@ import { SettingsService } from '../../services/service.index';
 
 
 @Component({
-  selector: 'app-accout-settings',
-  templateUrl: './accout-settings.component.html',
-  styles: []
+    selector: 'app-accout-settings',
+    templateUrl: './accout-settings.component.html',
+    styles: [],
+    standalone: false
 })
 export class AccoutSettingsComponent implements OnInit {
 

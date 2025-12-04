@@ -6,9 +6,10 @@ import { ModalUploadService } from 'src/app/components/modals-upload/modal-uploa
 
 
 @Component({
-  selector: 'app-usuarios',
-  templateUrl: './usuarios.component.html',
-  styles: []
+    selector: 'app-usuarios',
+    templateUrl: './usuarios.component.html',
+    styles: [],
+    standalone: false
 })
 export class UsuariosComponent implements OnInit {
 
