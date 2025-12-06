@@ -2,12 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { SubirArchivoService } from 'src/app/services/service.index';
 import { ModalUploadService } from './modal-upload.service';
+import { CommonModule } from '@angular/common';
+import { ImagenPipe } from 'src/app/pipes/imagen.pipe';
 
 @Component({
     selector: 'app-modals-upload',
     templateUrl: './modals-upload.component.html',
     styles: [],
-    standalone: false
+    imports: [
+      ImagenPipe,
+      CommonModule
+    ],
+    standalone: true
 })
 export class ModalsUploadComponent implements OnInit {
 

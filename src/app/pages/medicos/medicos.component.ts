@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Medico } from 'src/app/models/medico.model';
 import { MedicoService } from '../../services/service.index';
+import { RouterModule } from '@angular/router';
+import { ImagenPipe } from 'src/app/pipes/imagen.pipe';
 
 @Component({
     selector: 'app-medicos',
     templateUrl: './medicos.component.html',
     styles: [],
-    standalone: false
+    imports: [
+      RouterModule,
+      ImagenPipe
+    ],
+    standalone: true
 })
 export class MedicosComponent implements OnInit {
 

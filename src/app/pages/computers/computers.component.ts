@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Computadora } from '../../models/computadora.model';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { UsuarioService } from '../../services/service.index';
 import { ComputadoraService } from '../../services/service.index';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-computers',
     templateUrl: './computers.component.html',
     styles: [],
-    standalone: false
+    imports: [
+      RouterModule,
+      CommonModule
+    ],
+    standalone: true
 })
 export class ComputersComponent implements OnInit {
 

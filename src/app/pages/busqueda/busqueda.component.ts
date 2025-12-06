@@ -1,16 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
 import { Medico } from '../../models/medico.model';
 import { Hospital } from '../../models/hospital.model';
 import { Usuario } from '../../models/usuario.model';
+import { CommonModule } from '@angular/common';
+import { ImagenPipe } from 'src/app/pipes/imagen.pipe';
 
 @Component({
     selector: 'app-busqueda',
     templateUrl: './busqueda.component.html',
     styles: [],
-    standalone: false
+    imports: [
+      RouterModule,
+      CommonModule,
+      ImagenPipe
+    ],
+    standalone: true
 })
 export class BusquedaComponent implements OnInit {
 

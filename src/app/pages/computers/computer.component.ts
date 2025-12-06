@@ -1,14 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, NgModule, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ComputadoraService } from '../../services/service.index';
+import { CommonModule } from '@angular/common';
 // import { faCoffee, faMale } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-computer',
     templateUrl: './computer.component.html',
     styles: [],
-    standalone: false
+    imports: [
+      ReactiveFormsModule,
+      RouterModule,
+      CommonModule
+      // pagesRoutes
+    ],
+    standalone: true
 })
 export class ComputerComponent implements OnInit {
 

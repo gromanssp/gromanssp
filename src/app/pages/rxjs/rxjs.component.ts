@@ -6,7 +6,7 @@ import { map, filter } from 'rxjs/operators';
     selector: 'app-rxjs',
     templateUrl: './rxjs.component.html',
     styles: [],
-    standalone: false
+    standalone: true
 })
 export class RxjsComponent implements OnInit, OnDestroy {
 

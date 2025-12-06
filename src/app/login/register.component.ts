@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuarioService } from '../services/service.index';
 import { Usuario } from '../models/usuario.model';
 import { Router } from '@angular/router';
@@ -11,7 +11,11 @@ declare function init_plugins();
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./login.component.css'],
-    standalone: false
+    imports: [
+      // FormsModule,
+      ReactiveFormsModule
+    ],
+    standalone: true
 })
 export class RegisterComponent implements OnInit {
 

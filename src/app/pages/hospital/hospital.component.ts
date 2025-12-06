@@ -3,13 +3,19 @@ import { ModalUploadService } from 'src/app/components/modals-upload/modal-uploa
 import { Hospital } from '../../models/hospital.model';
 import { HospitalService } from 'src/app/services/service.index';
 import Swal from 'sweetalert2';
+import { FormsModule } from '@angular/forms';
+import { ImagenPipe } from 'src/app/pipes/imagen.pipe';
 
 
 @Component({
     selector: 'app-hospital',
     templateUrl: './hospital.component.html',
     styles: [],
-    standalone: false
+    imports: [
+      FormsModule,
+      ImagenPipe
+    ],
+    standalone: true
 })
 export class HospitalComponent implements OnInit {
 

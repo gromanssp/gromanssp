@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-declare function init_plugins();
+// declare function init_plugins();
 
 @Component({
     selector: 'app-nopagefound',
@@ -25,16 +25,16 @@ declare function init_plugins();
     text-shadow: 4px 4px 0 #ffffff, 6px 6px 0 #263238;
     line-height: 210px; }
   `],
-    standalone: false
+    standalone: true
 })
-export class NopagefoundComponent implements OnInit {
+export class NopagefoundComponent {
 
   anio: number = new Date().getFullYear();
 
   constructor() { }
 
-  ngOnInit() {
-    init_plugins();
-  }
+  // ngOnInit() {
+  //   init_plugins();
+  // }
 
 }

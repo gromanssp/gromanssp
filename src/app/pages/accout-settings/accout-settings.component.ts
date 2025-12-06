@@ -6,7 +6,7 @@ import { SettingsService } from '../../services/service.index';
     selector: 'app-accout-settings',
     templateUrl: './accout-settings.component.html',
     styles: [],
-    standalone: false
+    standalone: true
 })
 export class AccoutSettingsComponent implements OnInit {
 

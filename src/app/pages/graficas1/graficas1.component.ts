@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { GraficoDonaComponent } from 'src/app/components/grafico-dona/grafico-dona.component';
 
 
 @Component({
     selector: 'app-graficas1',
     templateUrl: './graficas1.component.html',
     styles: [],
-    standalone: false
+    imports: [
+      GraficoDonaComponent
+    ],
+    standalone: true
 })
 export class Graficas1Component implements OnInit {
 

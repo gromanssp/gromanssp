@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Hospital } from '../../models/hospital.model';
 import { MedicoService } from '../../services/medico/medico.service';
 import { HospitalService } from '../../services/service.index';
 import { Medico } from 'src/app/models/medico.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModalUploadService } from '../../components/modals-upload/modal-upload.service';
+import { ImagenPipe } from 'src/app/pipes/imagen.pipe';
 
 @Component({
     selector: 'app-medico',
     templateUrl: './medico.component.html',
     styles: [],
-    standalone: false
+    imports: [
+      ImagenPipe,
+      FormsModule
+    ],
+    standalone: true
 })
 export class MedicoComponent implements OnInit {
 

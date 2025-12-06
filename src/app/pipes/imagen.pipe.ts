@@ -3,7 +3,7 @@ import { URL_SERVICIOS } from '../config/config';
 
 @Pipe({
     name: 'imagen',
-    standalone: false
+    standalone: true
 })
 export class ImagenPipe implements PipeTransform {
 

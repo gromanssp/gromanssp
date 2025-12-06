@@ -13,6 +13,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "allowedCommonJsDependencies": [
+              "lodash"
+            ],
             "outputPath": {
               "base": "dist/adminpro"
             },
@@ -21,10 +24,11 @@
               "src/polyfills.ts"
             ],
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/plugins/bootstrap/css/bootstrap.min.css",
+              "src/assets/css/style.css"
             ],
             "styles": [
               "src/styles.css"

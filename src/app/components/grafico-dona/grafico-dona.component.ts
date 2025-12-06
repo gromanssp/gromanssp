@@ -1,14 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { ChartType } from 'chart.js';
-import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
-// import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
   standalone: true,
   // imports: [BaseChartDirective],
   selector: 'app-grafico-dona',
   templateUrl: './grafico-dona.component.html',
-  providers: [provideCharts(withDefaultRegisterables())]
+  providers: []
 })
 export class GraficoDonaComponent implements OnInit {
   // Doughnut

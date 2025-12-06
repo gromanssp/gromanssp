@@ -1,10 +1,16 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-promesas',
     templateUrl: './promesas.component.html',
     styles: [],
-    standalone: false
+    imports: [
+      DecimalPipe,
+      FormsModule
+    ],
+    standalone: true
 })
 export class PromesasComponent implements OnInit {
 

@@ -3,13 +3,21 @@ import { UsuarioService } from '../../services/service.index';
 import { Usuario } from '../../models/usuario.model';
 import Swal from 'sweetalert2';
 import { ModalUploadService } from 'src/app/components/modals-upload/modal-upload.service';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { ImagenPipe } from 'src/app/pipes/imagen.pipe';
 
 
 @Component({
     selector: 'app-usuarios',
     templateUrl: './usuarios.component.html',
     styles: [],
-    standalone: false
+    imports: [
+      FormsModule,
+      ImagenPipe
+    ],
+    standalone: true
 })
 export class UsuariosComponent implements OnInit {
 

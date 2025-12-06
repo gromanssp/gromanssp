@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { IncrementadorComponent } from 'src/app/components/incrementador/incrementador.component';
 
 @Component({
     selector: 'app-progress',
     templateUrl: './progress.component.html',
     styles: [],
-    standalone: false
+    imports: [
+    IncrementadorComponent
+],
+    standalone: true
 })
 export class ProgressComponent implements OnInit {
 

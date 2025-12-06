@@ -2,12 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { UsuarioService } from '../../services/service.index';
 import Swal from 'sweetalert2';
+import { FormsModule } from '@angular/forms';
+import { ImagenPipe } from 'src/app/pipes/imagen.pipe';
 
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
     styles: [],
-    standalone: false
+    imports: [
+      ImagenPipe,
+      FormsModule
+    ],
+    standalone: true
 })
 export class ProfileComponent implements OnInit {
 
