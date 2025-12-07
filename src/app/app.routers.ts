@@ -12,7 +12,6 @@ export const appRoutes: Routes = [
     {
         path: '',
         canActivate: [LoginGardGuard],
-        // children: pagesRoutes
         loadChildren: () => import('./pages/pages.routers').then(m => m.pagesRoutes)
     },
     { path: '**', component: NopagefoundComponent }

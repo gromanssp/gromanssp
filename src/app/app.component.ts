@@ -16,17 +16,9 @@ declare function init_plugins(): void;
 export class AppComponent {
   title = 'adminpro';
 
-  constructor( public ajustando: SettingsService) {
-    console.log("Angular CARGÓ el AppComponent");
-   }
+  constructor( public ajustando: SettingsService) {}
 
    ngAfterViewInit() {
-    console.log("Angular terminó de renderizar. Ejecutando init_plugins...");
-    try {
-      init_plugins();
-      console.log("init_plugins ejecutado correctamente");
-    } catch (e) {
-      console.error("Error ejecutando init_plugins:", e);
-    }
-  }
+     init_plugins();
+   }
 }

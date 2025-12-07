@@ -17,8 +17,6 @@ export class HeaderComponent implements OnInit {
 
   usuario: Usuario;
 
-
-
   constructor(
     public _usuarioService: UsuarioService,
     public router: Router
@@ -30,5 +28,9 @@ export class HeaderComponent implements OnInit {
 
   buscar( termino: string ) {
     this.router.navigate(['/busqueda', termino]);
+  }
+
+  toggleSidebar() {
+    const body = document.getElementsByClassName('body');
   }
 }

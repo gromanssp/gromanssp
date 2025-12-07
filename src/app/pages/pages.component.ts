@@ -28,7 +28,5 @@ import { ImagenPipe } from '../pipes/imagen.pipe';
 })
 export class PagesComponent {
 
-  constructor() {
-    console.log("PagesComponent CARGADO");
-  }
+  constructor() {  }
 }
